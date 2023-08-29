@@ -55,6 +55,12 @@ namespace flipnote
                 DrawPreviousFramePreview(window);
 
                 window.Display();
+
+                if(Keyboard.IsKeyPressed(Keyboard.Key.S))
+                {
+                    GifSaver.CreateGif(frames, "animation.gif");
+                }
+
             }
         }
 
