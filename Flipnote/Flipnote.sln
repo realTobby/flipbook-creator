@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flipnote", "flipnote\flipnote.csproj", "{7A4FEA32-6A82-4324-B47C-8EC1F92E15E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A4FEA32-6A82-4324-B47C-8EC1F92E15E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A4FEA32-6A82-4324-B47C-8EC1F92E15E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A4FEA32-6A82-4324-B47C-8EC1F92E15E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A4FEA32-6A82-4324-B47C-8EC1F92E15E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4FBB3C9-B87B-47E1-A011-9F46933A6B98}
+	EndGlobalSection
+EndGlobal
