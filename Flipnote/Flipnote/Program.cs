@@ -58,7 +58,8 @@ namespace flipnote
 
                 if(Keyboard.IsKeyPressed(Keyboard.Key.S))
                 {
-                    GifSaver.CreateGif(frames, "animation.gif");
+                    //GifSaver.CreateGif(frames, "animation.gif");
+                    GifSaver.ConvertToGif(frames, "animation.gif");
                 }
 
             }

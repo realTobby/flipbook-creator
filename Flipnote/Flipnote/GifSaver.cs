@@ -1,41 +1,53 @@
-﻿using ImageMagick;
-using SFML.Graphics;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using MagickNet = ImageMagick;
+using SFML.Graphics;
+using ImageMagick;
 
 namespace flipnote
 {
-    public static class GifSaver
+    public class GifSaver
     {
-        public static void CreateGif(List<RenderTexture> frames, string outputPath)
+        public static void ConvertToGif(List<RenderTexture> renderTextures, string outputPath)
         {
-            using (MagickImageCollection collection = new MagickImageCollection())
+            var magickImages = new List<MagickImage>();
+
+            foreach (var renderTexture in renderTextures)
             {
-                foreach (var frame in frames)
+                var magickImage = ConvertRenderTextureToMagickImage(renderTexture);
+                magickImages.Add(magickImage);
+            }
+
+            CreateGifFromMagickImages(magickImages, outputPath);
+        }
+
+        private static MagickImage ConvertRenderTextureToMagickImage(RenderTexture renderTexture)
+        {
+            var sfmlImage = renderTexture.Texture.CopyToImage();
+            var width = (int)renderTexture.Size.X;
+            var height = (int)renderTexture.Size.Y;
+
+            // Get the pixel bytes from the SFML image and prepare it for MagickImage
+            byte[] pixels = sfmlImage.Pixels;
+            var magickImage = new MagickImage(pixels, new PixelReadSettings(width, height, StorageType.Char, PixelMapping.RGBA));
+
+            magickImage.BackgroundColor = MagickColors.White;
+            magickImage.Alpha(AlphaOption.Remove);
+
+            return magickImage;
+        }
+
+        private static void CreateGifFromMagickImages(List<MagickImage> magickImages, string outputPath)
+        {
+            using (var magickImageCollection = new MagickImageCollection())
+            {
+                foreach (var image in magickImages)
                 {
-                    // Convert the RenderTexture to a MagickImage
-                    using (var stream = new System.IO.MemoryStream())
-                    {
-                        frame.Texture.CopyToImage().SaveToStream(SFML.Graphics.ImageFormat.Png, stream);
-                        stream.Position = 0;
-
-                        var image = new MagickImage(stream);
-
-                        // Set the "dispose" setting to "None" for the first frame, and "Previous" for subsequent frames
-                        if (frame == frames[0])
-                        {
-                            image.AnimationDisposeMethod = GifDisposeMethod.None;
-                        }
-                        else
-                        {
-                            image.AnimationDisposeMethod = GifDisposeMethod.Previous;
-                        }
-
-                        collection.Add(image);
-                    }
+                    magickImageCollection.Add(image);
+                    image.AnimationDelay = 10;
                 }
-
-                // Save the GIF
-                collection.Write(outputPath);
+                magickImageCollection.Write(outputPath);
             }
         }
     }
