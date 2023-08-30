@@ -1,6 +1,8 @@
 # flipbook-creator
 Create flipbook animations
 
+
+
 ## Features:
 
 - Draw on Frames
@@ -8,3 +10,6 @@ Create flipbook animations
 - See a preview-overlay of the previous frame
 - Playback the animation by pressing space
 - Save the animation as a gif by pressing S
+
+
+![Alt Text](https://github.com/realTobby/flipbook-creator/tree/main/screenies/screen1.gif)
