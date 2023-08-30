@@ -12,4 +12,4 @@ Create flipbook animations
 - Save the animation as a gif by pressing S
 
 
-![Alt Text](https://github.com/realTobby/flipbook-creator/tree/main/screenies/screen1.gif)
+![Alt Text](https://github.com/realTobby/flipbook-creator/blob/main/screenies/screen1.gif)
